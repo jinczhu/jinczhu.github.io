@@ -1,1 +1,98 @@
-Hello World
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jgL Remote</title>
+   <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css"/>
+  </head>
+<body>
+
+<div class="container" role="main">
+  <div class="row span7 text-center">
+      <p><p><p><p>
+      <button class="btn btn-lg btn-danger" onclick="remote('power',1)">
+        Power
+      </button>
+      <p>
+      <button class="btn btn-lg btn-success" onclick="remote('input',1)">
+        Input
+      </button>
+      <p>
+      <div class="btn-group-vertical">
+      <button class="btn btn-lg btn-primary" onclick="remote('volup', 1)">
+        Volume Up 1
+      </button>
+      <button class="btn btn-lg btn-primary" onclick="remote('voldown', 1)">
+        Volume Down 1
+      </button>
+      </div>
+      <div class="btn-group-vertical">
+      <button class="btn btn-lg btn-primary" onclick="remote('volup', 5)">
+        Volume Up 5
+      </button>
+      <button class="btn btn-lg btn-primary" onclick="remote('voldown', 5)">
+        Volume Down 5
+      </button>
+      </div>
+      <p><p>
+      <button class="btn btn-lg btn-primary" onclick="remote('mute',1)">
+        Mute
+      </button>
+    </p>
+  </div>
+
+  <div class="jumbotron">
+   <h1>Hey,</h1>
+   <p>I made on online remote, so I can turn on the chromecast from my phone. 
+   <p>Because why would I stand up and walk 3 feet to the remote when I can take out my pocket computer to do the work for me?
+   <p><a href="http://www.jglukasik.com/projects/remote">Learn more.</a>
+  </div> 
+
+  <div class="row span7 text-center">
+      <button class="btn btn-lg btn-info" onclick="testLed()">
+        Flash LED 
+      </button>
+  </div>
+
+</div>
+
+</body>
+
+</html>
+
+<script>
+var isTestLed = 0;
+
+function remote(action, count) {
+  
+  var http = new XMLHttpRequest();
+  var path = "cgi-bin/remote.pl";
+
+  // If we are on testing mode, send a count of 0
+  // This will tell remote.pl to run the test function
+  // on the spark core
+  if (isTestLed) {
+    count = 0;
+  }
+
+  var params = "?action=" + action + "&count=" + count;
+
+  console.log(path+params);
+  http.open("GET", path+params, true);
+  http.send();
+
+  // Reset back to normal mode, not testing
+  document.body.style.background = "#FFFFFF";
+  isTestLed = 0;
+}
+
+function testLed(){
+  // Set to testing mode
+  document.body.style.background = "#ADD8E6";
+  isTestLed = 1;
+}
+
+</script>
+
