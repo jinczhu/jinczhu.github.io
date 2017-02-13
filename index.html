@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+		<title>A Demo Of Webapp</title>
+		<link rel="stylesheet" href="./static/css/bootstrap.min.css" type="text/css"/>
+		<meta  name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+		<script type="text/javascript" src="./static/js/min.slip.js"></script>
+		<style type="text/css">
+			body{
+				background-color: #f2f4f5;
+				margin: 0;
+				padding: 0;
+			}
+		<!-
+			img{
+				width: 100%;
+			}
+		 ->
+		</style>
+
+	</head>
+	<body>
+
+
+		<div id="container">
+		  <div class="page page-0">
+			 <input type="button" onclick="slip.jump(1)" value="TV" style="background:url(images/TV.png);background-repeat:no-repeat;background-size:100% 100%;  height:200px;width:200px;" /> 
+			 <input type="button" onclick="slip.jump(2)" value="lighter" style="background:url(images/lighter.png);background-repeat:no-repeat;background-size:100% 100%;  height:200px;width:200px;" /> 
+			 <p>
+			 <input type="button"  value="other" style="background:url(images/lighter.png);background-repeat:no-repeat;background-size:100% 100%;  height:200px;width:200px;" /> 
+
+			 <input type="button"  value="other" style="background:url(images/lighter.png);background-repeat:no-repeat;background-size:100% 100%;  height:200px;width:200px;" /> 
+			 <p>
+			 <input type="button"  value="other" style="background:url(images/lighter.png);background-repeat:no-repeat;background-size:100% 100%;  height:200px;width:200px;" /> 
+
+			 <input type="button"  value="other" style="background:url(images/lighter.png);background-repeat:no-repeat;background-size:100% 100%;  height:200px;width:200px;" /> 
+			 <p>
+		  </div>
+		  <div class="page page-1">
+			<button  class="btn btn-lg btn-danger btn-block" onclick="slip.jump(0)">HOME</button>
+			<p><p>
+		      <button class="btn btn-lg btn-danger" onclick="remote('power',1)">
+			Power
+		      </button>
+		      <button class="btn btn-lg btn-success" onclick="remote('input',1)">
+			Input
+		      </button>
+		      <button class="btn btn-lg btn-primary" onclick="remote('mute',1)">
+			Mute
+		      </button>
+		      <button class="btn btn-lg btn-primary" onclick="remote('Menue',1)">
+			Menue
+		      </button>
+
+		      <p>
+		      <div class="btn-group-vertical">
+		      <button class="btn btn-lg btn-primary" onclick="remote('volup', 1)">
+			Volume Up 1
+		      </button>
+		      <button class="btn btn-lg btn-primary" onclick="remote('voldown', 1)">
+			Volume Down 1
+		      </button>
+		      </div>
+		      <div class="btn-group-vertical">
+		      <button class="btn btn-lg btn-primary" onclick="remote('Ch+', 1)">
+			Channel Plus
+		      </button>
+		      <button class="btn btn-lg btn-primary" onclick="remote('Ch-', 5)">
+			Channel Minus
+		      </button>
+		      </div>
+		  </div>
+     
+		  <div class="page page-2">
+			<button  class="btn btn-lg btn-danger btn-block" onclick="slip.jump(0)">HOME</button>
+			<p><p>
+			<img src="images/lighter.png">
+		  </div>
+		</div>
+	</body>
+	<script type="text/javascript">
+			var container = document.getElementById('container');
+			var pages = document.querySelectorAll('.page');
+			var slip = Slip(container, 'y').webapp(pages);
+
+	</script>
+</html>
